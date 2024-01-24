@@ -45,7 +45,7 @@ class PalworldProcess:
             return
 
         proc = await asyncio.create_subprocess_exec(
-            self.palworld_bin, cwd=self.palworld_workdir
+            self.palworld_bin, cwd=self.palworld_workdir, preexec_fn=os.setpgrp
         )
         self._proc = proc
         logger.info("Palworld started")
