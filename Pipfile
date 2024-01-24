@@ -7,11 +7,13 @@ name = "pypi"
 psutil = "*"
 "discord.py" = "*"
 python-dotenv = "*"
+loguru = "*"
 
 [dev-packages]
 black = "*"
 flake8 = "*"
 isort = "*"
+types-psutil = "*"
 
 [requires]
 python_version = "3.10"
