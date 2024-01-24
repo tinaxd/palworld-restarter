@@ -143,7 +143,7 @@ client = DiscordBot()
 
 
 @client.tree.command()
-async def restart_server(interaction: discord.Interaction):
+async def restart_server_cmd(interaction: discord.Interaction):
     logger.info("Received restart_server command")
     await interaction.response.defer(thinking=True)
     await client.restart_server()
@@ -151,7 +151,7 @@ async def restart_server(interaction: discord.Interaction):
 
 
 @client.tree.command()
-async def start_server(interaction: discord.Interaction):
+async def start_server_cmd(interaction: discord.Interaction):
     logger.info("Received start_server command")
     await interaction.response.defer(thinking=True)
     await client.start_server()
@@ -159,7 +159,7 @@ async def start_server(interaction: discord.Interaction):
 
 
 @client.tree.command()
-async def stop_server(interaction: discord.Interaction):
+async def stop_server_cmd(interaction: discord.Interaction):
     logger.info("Received stop_server command")
     await interaction.response.defer(thinking=True)
     await client.stop_server()
