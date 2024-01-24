@@ -102,6 +102,12 @@ class DiscordBot(discord.Client):
         await self._pp.stop()
         await self._pp.start()
 
+    async def stop_server(self):
+        await self._pp.stop()
+
+    async def start_server(self):
+        await self._pp.start()
+
     @tasks.loop(seconds=60.0)
     async def update_presence(self) -> None:
         metrics = MemoryMetrics.fetch()
@@ -141,6 +147,22 @@ async def restart_server(interaction: discord.Interaction):
     await interaction.response.defer(thinking=True)
     await client.restart_server()
     await interaction.followup.send("Restarted server")
+
+
+@client.tree.command()
+async def start_server(interaction: discord.Interaction):
+    logger.info("Received start_server command")
+    await interaction.response.defer(thinking=True)
+    await client.start_server()
+    await interaction.followup.send("Started server")
+
+
+@client.tree.command()
+async def stop_server(interaction: discord.Interaction):
+    logger.info("Received stop_server command")
+    await interaction.response.defer(thinking=True)
+    await client.stop_server()
+    await interaction.followup.send("Stopped server")
 
 
 if __name__ == "__main__":
