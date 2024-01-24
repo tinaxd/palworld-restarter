@@ -56,14 +56,14 @@ class PalworldProcess:
             logger.warning("Palworld is not running")
             return
 
-        # send SIGINT to process
-        self._proc.send_signal(signal.SIGINT)
-        logger.info("Sent SIGINT to Palworld")
+        # send SIGTERM to process
+        self._proc.send_signal(signal.SIGTERM)
+        logger.info("Sent SIGTERM to Palworld")
 
         # wait for process termination
-        await self._proc.wait()
+        status = await self._proc.wait()
         self._proc = None
-        logger.info("Palworld stopped")
+        logger.info(f"Palworld stopped with status {status}")
 
 
 class DiscordBot(discord.Client):
