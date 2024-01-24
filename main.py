@@ -56,9 +56,9 @@ class PalworldProcess:
             logger.warning("Palworld is not running")
             return
 
-        # send SIGTERM to process
-        self._proc.send_signal(signal.SIGTERM)
-        logger.info("Sent SIGTERM to Palworld")
+        # send SIGINT to process
+        self._proc.send_signal(signal.SIGINT)
+        logger.info("Sent SIGINT to Palworld")
 
         # wait for process termination
         await self._proc.wait()
